@@ -14,7 +14,16 @@
 8. Logout hook
     1. useLogout hook, inside we declare an async function where we log out the user with the method .signOut() (imported from proyectAuth, config file of Firestore)
     2. Return the function logout, error, isPending so we can use it wherever we want
+    3. We import the hook into the navbar to logout
+9. Cleanup functions
+    Explanation: if we are in the process of signin a new user and we click in another link, 
+    the process it's still loading and that leds an error, because it's trying to process it while the component it's unmounted
 
+    1. Create another state to see if it's cancelled, we use useEffect(() => {}, []) with a return setting the cancelled state to true.
+    This way when we click the button with the logout function, the component re-renders (the hook) so the state it's true, and therefore will not update the error
+    and isPending states.
+
+    "useEffect's clean-up runs after the next render, before the next useEffect." https://maxrozen.com/demystifying-useeffect-cleanup-function
 
 
 

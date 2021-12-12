@@ -1,14 +1,16 @@
 import { NavLink } from "react-router-dom";
-
+import { useLogout } from "../hooks/useLogout";
 // Bootstrap components
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
-
+import Button from "react-bootstrap/Button"
 //Styles
 import "./NavbarMain.css";
 
 export default function NavbarMain() {
+  const {logout} = useLogout();
+
   return (
     <div>
       <Navbar bg="primary" expand="lg" className="py-4">
@@ -28,6 +30,7 @@ export default function NavbarMain() {
               <NavLink to="/signup" className="nav-link">
                 Signup
               </NavLink>
+              <Button variant="outline-danger mx-4" onClick={logout}>Logout</Button>
             </Nav>
           </Navbar.Collapse>
         </Container>

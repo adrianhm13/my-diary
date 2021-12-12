@@ -4,3 +4,28 @@
 3. Login/Signup Forms
 4. Setting up database and auth from firestore
 5. Creating useSignup hook
+6. Creating useAuthContext hook
+    1. AuthContext.js with the provider and wrapping the children, Reducer function to update state of user, and createContext to add the value to the provider
+    2. useAuth.js to consume that context and return it, so we have access to the dispatch function and value from the context/reducer
+7. Login action
+    1. Add the case of Login in the reducer function within AuthContext
+    2. In the useSignup hook, we import the useAuthContext hook (which has access to the dispatch function after using useContext)
+    3. Desctructure dispatch from useAuthContext so we can use it after signup the user so the user it's login
+8. Logout hook
+    1. useLogout hook, inside we declare an async function where we log out the user with the method .signOut() (imported from proyectAuth, config file of Firestore)
+    2. Return the function logout, error, isPending so we can use it wherever we want
+
+
+
+
+
+
+
+
+
+
+
+
+/// IDEAS
+
+Write and choose the date as the user wish, and also filter by date

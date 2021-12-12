@@ -1,0 +1,6 @@
+1. Pages and routes
+2. Navbar
+    Import bootstrap, create scss file to modify variables and import it into index.js
+3. Login/Signup Forms
+4. Setting up database and auth from firestore
+5. Creating useSignup hook

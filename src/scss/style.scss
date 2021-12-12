@@ -1,0 +1,27 @@
+/********************************************************/
+/*                 CUSTOMIZED DEFAULTS                  */
+/********************************************************/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@100;200;300;400&display=swap');
+
+$primary: #936fac;
+
+
+//Navbar colors
+$navbar-light-color: rgb(211, 211, 211);
+$navbar-light-brand-color: rgb(233, 233, 233);
+$navbar-light-hover-color: rgb(218, 218, 218);
+$navbar-light-active-color: rgb(245, 245, 245);
+//
+
+
+$font-family-base: 'Noto Sans Display', sans-serif;
+$display-font-sizes: (
+  1: 5rem,
+  2: 3rem,
+  3: 4rem,
+  4: 3.5rem,
+  5: 1.8rem,
+  6: 1.3rem
+);
+
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';

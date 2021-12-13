@@ -1,15 +1,18 @@
 import { NavLink } from "react-router-dom";
 import { useLogout } from "../hooks/useLogout";
+import { useAuthContext } from "../hooks/useAuthContext";
+
 // Bootstrap components
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button"
+import Button from "react-bootstrap/Button";
 //Styles
 import "./NavbarMain.css";
 
 export default function NavbarMain() {
-  const {logout} = useLogout();
+  const { user } = useAuthContext();
+  const { logout } = useLogout();
 
   return (
     <div>
@@ -24,13 +27,24 @@ export default function NavbarMain() {
             className="justify-content-end gap-5"
           >
             <Nav className="gap-2">
-              <NavLink to="/login" className="nav-link">
-                Login
-              </NavLink>
-              <NavLink to="/signup" className="nav-link">
-                Signup
-              </NavLink>
-              <Button variant="outline-danger mx-4" onClick={logout}>Logout</Button>
+              {!user && (
+                <>
+                  <NavLink to="/login" className="nav-link">
+                    Login
+                  </NavLink>
+                  <NavLink to="/signup" className="nav-link">
+                    Signup
+                  </NavLink>
+                </>
+              )}
+              {user && (
+                <>
+                  <Navbar.Text>Welcome, {user.displayName}</Navbar.Text>
+                  <Button variant="outline-danger mx-4" onClick={logout}>
+                    Logout
+                  </Button>
+                </>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Container>

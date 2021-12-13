@@ -24,6 +24,11 @@
     and isPending states.
 
     "useEffect's clean-up runs after the next render, before the next useEffect." https://maxrozen.com/demystifying-useeffect-cleanup-function
+10. Login hook
+    1. Really similar to logout, but the function .signInWithCredentials... it will take the email/password parameters and it returns a response,
+    We can use this response to dispatch the action with payload response.user
+
+
 
 
 

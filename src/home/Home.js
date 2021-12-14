@@ -1,3 +1,5 @@
+import {useAuthContext} from '../hooks/useAuthContext'
+import { useCollection } from '../hooks/useCollection';
 // Styles
 import "./Home.css";
 
@@ -5,11 +7,18 @@ import "./Home.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import OffCanvas from "react-bootstrap/Offcanvas";
-import Navbar from "react-bootstrap/Navbar";
-import Button from "react-bootstrap/Button"
+// import OffCanvas from "react-bootstrap/Offcanvas";
+// import Navbar from "react-bootstrap/Navbar";
+// import Button from "react-bootstrap/Button"
+
+//Components
 import { NewEntryForm } from "./NewEntryForm";
+import EntriesList from "./EntriesList"
+
 export default function Home() {
+    const {user} = useAuthContext()
+    const {documents, error} = useCollection('entries')
+
   return (
     <Container fluid className="home">
       <Row>
@@ -17,12 +26,13 @@ export default function Home() {
           <hr></hr>
           <div className="p-2">
             <div className="d-flex justify-content-center">
-            <NewEntryForm />
+            <NewEntryForm uid={user.uid}/>
             </div>
           </div>
         </Col>
         <Col lg={9} xs={10}>
-          B
+          {error && <p>{error}</p>}
+          {documents && <EntriesList entries={documents}/>}
         </Col>
       </Row>
     </Container>

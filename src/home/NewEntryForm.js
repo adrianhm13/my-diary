@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useFirestore } from "../hooks/useFirestore";
 
+//Bootstrap components
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
@@ -10,10 +12,22 @@ function FormContent(props) {
   const [content, setContent] = useState("");
   const [date, setDate] = useState("");
 
+  const { uid, onHide } = props;
+  const { addDocument, response } = useFirestore("entries");
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(title, content, date);
+    addDocument({ uid, title, content, date });
   };
+
+  useEffect(() => {
+    if (response.success) {
+      setTitle("");
+      setContent("");
+      setDate("");
+      onHide()
+    }
+  }, [response.success]);
+
   return (
     <Modal
       {...props}
@@ -57,7 +71,10 @@ function FormContent(props) {
               }}
             />
           </FloatingLabel>
-          <FloatingLabel controlId="floatingTextarea3" label="Choose the day when the events happened">
+          <FloatingLabel
+            controlId="floatingTextarea3"
+            label="Choose the day when the events happened"
+          >
             <Form.Control
               required
               type="date"
@@ -69,7 +86,9 @@ function FormContent(props) {
               }}
             />
           </FloatingLabel>
-          <Button variant="dark" type="submit">Add</Button>
+          <Button variant="outline-primary" type="submit">
+            Add
+          </Button>
         </Form>
       </Modal.Body>
       <Modal.Footer>
@@ -79,9 +98,8 @@ function FormContent(props) {
   );
 }
 
-export function NewEntryForm() {
+export function NewEntryForm({ uid }) {
   const [modalShow, setModalShow] = useState(false);
-
   return (
     <>
       <Button
@@ -97,7 +115,11 @@ export function NewEntryForm() {
         A
       </Button>
       {/* Add Icon */}
-      <FormContent show={modalShow} onHide={() => setModalShow(false)} />
+      <FormContent
+        uid={uid}
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </>
   );
 }

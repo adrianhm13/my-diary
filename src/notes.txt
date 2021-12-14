@@ -68,7 +68,8 @@
     2. Create useFirestore.js (Add or remove documents to the collection)
         1. useReducer for dispatch actions, useEffect for cleanups, useState for assigning state to the cleanups functions.
         2. import projectFirestore to interact with the methods of firestore.
-        3. collection as parameter for the useFirestore hook, it's more reusable for different functions
+        3. collection as parameter for the useFirestore hook, it's more reusable for different functions we assign it to a variable (like ref) to use it later on, 
+        for example like ref.add(doc)
 
 
 
@@ -79,4 +80,5 @@
 
 /// IDEAS
 
-Write and choose the date as the user wish, and also filter by date
+-Write and choose the date as the user wish, and also filter by date as created, or date as picked while creating the entry
+-Use emojis to represent how it felt the user that day 

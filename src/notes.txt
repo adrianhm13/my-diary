@@ -55,8 +55,20 @@
 
 14. Route Guarding
 
-    If user its singup or login redirect to homepage, if there is no user, it will go to signup page
+    If user its singup or login redirect to homepage, if there is no user, it will go to signup page.
+    1. Import Redirect from react-router-dom, and user from useAuthContext.
+    2. Conditional rendering checking if there is user or not per each page.
 
+15. Diary Forms
+
+
+16. useFirestore hook
+
+    1. Create data base Firestore
+    2. Create useFirestore.js (Add or remove documents to the collection)
+        1. useReducer for dispatch actions, useEffect for cleanups, useState for assigning state to the cleanups functions.
+        2. import projectFirestore to interact with the methods of firestore.
+        3. collection as parameter for the useFirestore hook, it's more reusable for different functions
 
 
 

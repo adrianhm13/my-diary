@@ -29,16 +29,19 @@ export default function Signup() {
           >
             <input
               type="email"
+              aria-label="Email"
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email"
             ></input>
             <input
               type="text"
+              aria-label="Username"
               onChange={(e) => setDisplayName(e.target.value)}
               placeholder="Username"
             ></input>
             <input
               type="password"
+              aria-label="Password"
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Password"
             ></input>

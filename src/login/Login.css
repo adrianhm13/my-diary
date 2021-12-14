@@ -8,10 +8,10 @@
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
-.login label {
+.login{
     width: 100%;
 }
-.login label input {
+.login input {
   margin: 17px 0 0 0;
   padding: 10px;
   width: 100%;
@@ -20,11 +20,11 @@
   resize: none;
   border: 1px solid rgb(209, 209, 209);
 }
-.login label input:hover {
+.login input:hover {
   transition: border-color 0.3s ease-in-out;
   border: 1px solid rgb(136, 136, 136);
 }
-.login label input:focus {
+.login input:focus {
   outline: none;
   border: 1px solid rgb(34, 34, 34);
 }

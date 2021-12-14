@@ -1,0 +1,8 @@
+.home {
+}
+.row > div.sidebar {
+   min-height: 91vh;
+}
+p.title{
+    color: lightgray;
+}

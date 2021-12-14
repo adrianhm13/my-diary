@@ -26,20 +26,18 @@ export default function Login() {
             onSubmit={(e) => handleSubmit(e)}
             className="d-flex gap-2 flex-column align-items-center bg-primary"
           >
-            <label>
               <input
                 type="email"
+                aria-label="Email"
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email"
               ></input>
-            </label>
-            <label>
               <input
                 type="password"
+                aria-label="Password"
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
               ></input>
-            </label>
             {!isPending && <button variant="secondary">Log In</button>}
             {isPending && (
               <button variant="secondary" disabled>

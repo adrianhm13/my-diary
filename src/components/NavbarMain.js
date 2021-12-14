@@ -16,9 +16,9 @@ export default function NavbarMain() {
 
   return (
     <div>
-      <Navbar bg="primary" expand="lg" className="py-4">
-        <Container>
-          <NavLink exact to="/" className="navbar-brand display">
+      <Navbar bg="primary" expand="lg" className="py-4 m-auto">
+        <Container fluid>
+          <NavLink exact to="/" className="navbar-brand display ms-3 ">
             Personal Diary
           </NavLink>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />

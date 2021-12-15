@@ -16,7 +16,8 @@ function FormContent(props) {
   const { addDocument, response } = useFirestore("entries");
   const handleSubmit = (e) => {
     e.preventDefault();
-    addDocument({ uid, title, content, date });
+    addDocument({ uid, title, content, date});
+    onHide()
   };
 
   useEffect(() => {
@@ -24,7 +25,6 @@ function FormContent(props) {
       setTitle("");
       setContent("");
       setDate("");
-      onHide()
     }
   }, [response.success]);
 

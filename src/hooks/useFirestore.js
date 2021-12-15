@@ -40,9 +40,9 @@ export const useFirestore = (collection) => {
 
   //Dispatch if it's not cancelled
   const dispatchIfNotCancelled = (action) => {
-    dispatch(action);
-    console.log(response)
-    setTimeout(() => {console.log(response)}, 2000)
+    if (!isCancelled) {
+      dispatch(action);
+    }
   };
 
   //Add document
@@ -50,9 +50,9 @@ export const useFirestore = (collection) => {
     dispatch({ type: "IS_PENDING" });
 
     try {
-      const createdAt = timestamp.fromDate(new Date())
-      const addedDocument = await ref.add({...doc, createdAt});
-      console.log(doc)
+      const createdAt = timestamp.fromDate(new Date());
+      const addedDocument = await ref.add({ ...doc, createdAt });
+      console.log(doc);
       dispatchIfNotCancelled({ type: "ADD_DOCUMENT", payload: addedDocument });
     } catch (error) {
       dispatchIfNotCancelled({ type: "ERROR", payload: error.message });
@@ -63,7 +63,10 @@ export const useFirestore = (collection) => {
   const deleteDocument = async (id) => {};
 
   useEffect(() => {
-    return () => setIsCancelled(true);
+    return () => {
+      console.log("unmounting useFirestore");
+      setIsCancelled(true);
+    };
   }, []);
 
   return { addDocument, deleteDocument, response };

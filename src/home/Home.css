@@ -1,8 +1,23 @@
-.home {
+.home .row > div.sidebar {
+  min-height: 91vh;
 }
-.row > div.sidebar {
-   min-height: 91vh;
+p.title {
+  color: lightgray;
 }
-p.title{
-    color: lightgray;
+
+.entries-list .my-masonry-grid {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-left: -30px;
+    width: auto;
+    padding: 20px;
 }
+.entries-list .my-masonry-grid_column {
+    padding-left: 30px;
+    background-clip: padding-box;
+}
+
+.entries-list .my-masonry-grid_column > div {
+    margin-bottom: 30px;
+  }

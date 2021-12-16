@@ -20,14 +20,14 @@ export default function Home() {
   const { documents, error } = useCollection(
     "entries",
     ["uid", "==", user.uid],
-    ["category", "==", "categorytest"],
+    null, // ["category", "==", "categorytest"], to use categories later on
     ["createdAt", "desc"]
   );
 
   return (
     <Container fluid className="home">
       <Row>
-        <Col className="bg-primary sidebar" lg={3} xs={2}>
+        <Col className="bg-primary sidebar" lg={2} xs={2}>
           <hr></hr>
           <div className="p-2">
             <div className="d-flex justify-content-center">

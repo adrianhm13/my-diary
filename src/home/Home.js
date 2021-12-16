@@ -31,7 +31,7 @@ export default function Home() {
           <hr></hr>
           <div className="p-2">
             <div className="d-flex justify-content-center">
-              <NewEntryForm uid={user.uid} />
+              <NewEntryForm uid={user.uid} action={"add"}/>
             </div>
           </div>
         </Col>

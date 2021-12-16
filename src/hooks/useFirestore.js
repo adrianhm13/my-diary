@@ -26,6 +26,13 @@ const firestoreReducer = (state, action) => {
         error: null,
         success: true,
       };
+    case "EDIT_DOCUMENT":
+      return {
+        document: action.payload,
+        isPending: false,
+        error: null,
+        success: true,
+      };
     case "ERROR":
       return {
         document: null,
@@ -74,10 +81,30 @@ export const useFirestore = (collection) => {
       await ref.doc(id).delete();
       dispatchIfNotCancelled({ type: "DELETE_DOCUMENT" });
     } catch (error) {
-      dispatchIfNotCancelled({ type: "ERROR", payload: error.message });
+      dispatchIfNotCancelled({
+        type: "ERROR",
+        payload: "Could not delete the entry",
+      });
     }
   };
 
+  //Edit document
+  const editDocument = async (id, doc) => {
+    dispatch({ type: "IS_PENDING" });
+
+    try {
+      const updatedDocument = await ref.doc(id).update(doc);
+      dispatchIfNotCancelled({
+        type: "EDIT_DOCUMENT",
+        payload: updatedDocument,
+      });
+    } catch (error) {
+      dispatchIfNotCancelled({
+        type: "ERROR",
+        payload: "Could not edit the entry",
+      });
+    }
+  };
   useEffect(() => {
     return () => {
       console.log("unmounting useFirestore");
@@ -85,5 +112,5 @@ export const useFirestore = (collection) => {
     };
   }, []);
 
-  return { addDocument, deleteDocument, response };
+  return { addDocument, deleteDocument, editDocument, response };
 };

@@ -107,7 +107,6 @@ export const useFirestore = (collection) => {
   };
   useEffect(() => {
     return () => {
-      console.log("unmounting useFirestore");
       setIsCancelled(true);
     };
   }, []);

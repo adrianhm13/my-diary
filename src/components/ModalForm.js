@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useFirestore } from "../hooks/useFirestore";
+import Picker from "emoji-picker-react";
 
 //Bootstrap components
 import Modal from "react-bootstrap/Modal";
@@ -11,20 +12,20 @@ export function ModalForm(props) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [date, setDate] = useState("");
-
+  const [color, setColor] = useState("#936fac");
   const { action, uid, onHide, entry } = props;
 
   const { addDocument, editDocument, response } = useFirestore("entries");
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (action === "add") {
-      addDocument({ uid, title, content, date });
+      addDocument({ uid, title, content, date, color,});
     } else if (action === "edit") {
       editDocument(entry.id, { ...entry, title, content, date });
     }
     onHide();
   };
+
 
   //Adding values of entry to the inputs when editing
   useEffect(() => {
@@ -33,6 +34,8 @@ export function ModalForm(props) {
       setTitle(entry.title);
       setContent(entry.content);
       setDate(entry.date);
+      setColor(entry.color);
+
     }
   }, [entry]);
 
@@ -42,6 +45,8 @@ export function ModalForm(props) {
       setTitle("");
       setContent("");
       setDate("");
+      setColor("#936fac");
+
     }
   }, [response.success]);
 
@@ -105,6 +110,22 @@ export function ModalForm(props) {
               className="mb-3"
               onChange={(e) => {
                 setDate(e.target.value);
+              }}
+            />
+          </FloatingLabel>
+          <FloatingLabel
+            controlId="floatingColorPicker"
+            label="Pick the color for your entry"
+          >
+            <Form.Control
+              type="color"
+
+              defaultValue="#563d7c"
+              style={{ height: "100px", width: "100%" }}
+              className="mb-3 p-5"
+              title="Choose your color"
+              onChange={(e) => {
+                setColor(e.target.value);
               }}
             />
           </FloatingLabel>

@@ -11,16 +11,14 @@ import {ModalForm} from "../components/ModalForm";
 
 export default function Entry({ entry }) {
   const [modalShow, setModalShow] = useState(false);
-  const { deleteDocument, editDocument } = useFirestore("entries");
+  const { deleteDocument} = useFirestore("entries");
 
-  const handleEdit = () => {
-    const newDoc = { ...entry, title: "DOC EDITED" };
-    editDocument(entry.id, newDoc);
-  };
   return (
     <div>
-      <Card key="entry.id" className="grid-item">
-        <Card.Body>
+      <Card key="entry.id" className="grid-item flex-row">
+        <div className="side-color" style={{backgroundColor: `${entry.color}`}}>
+        </div>
+        <Card.Body className="d-flex flex-column">
           <div className="icons-container">
             <i className="fas fa-edit" onClick={() => setModalShow(true)}></i>
             <i
@@ -33,8 +31,6 @@ export default function Entry({ entry }) {
             {entry.date}
           </Card.Subtitle>
           <Card.Text>{entry.content}</Card.Text>
-          <Card.Link href="#">Card Link</Card.Link>
-          <Card.Link href="#">Another Link</Card.Link>
         </Card.Body>
       </Card>
       {modalShow && <ModalForm

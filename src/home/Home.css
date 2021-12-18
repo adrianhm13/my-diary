@@ -19,6 +19,7 @@ p.title {
 
 .entries-list .my-masonry-grid_column > div {
   margin-bottom: 30px;
+  margin-left: 10px;
 }
 .card-body .icons-container {
   position: absolute;
@@ -50,8 +51,18 @@ text-align: center;
 .grid-item.card {
   width: 18rem;
 }
-@media only screen and (max-width: 360px) {
+@media only screen and (max-width: 375px) {
   .grid-item.card {
     width: 14rem;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .grid-item.card {
+    width: 18rem;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .grid-item.card {
+    width: 20rem;
   }
 }

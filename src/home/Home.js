@@ -1,5 +1,6 @@
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useCollection } from "../hooks/useCollection";
+
 // Styles
 import "./Home.css";
 
@@ -7,9 +8,6 @@ import "./Home.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-// import OffCanvas from "react-bootstrap/Offcanvas";
-// import Navbar from "react-bootstrap/Navbar";
-// import Button from "react-bootstrap/Button"
 
 //Components
 import { NewEntryForm } from "./NewEntryForm";

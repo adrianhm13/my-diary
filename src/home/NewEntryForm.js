@@ -19,9 +19,8 @@ export function NewEntryForm({ uid, action }) {
         variant="outline-light d-block d-sm-none"
         onClick={() => setModalShow(true)}
       >
-        A
+        <i class="fas fa-plus-square"></i>
       </Button>
-      {/* Add Icon */}
       {modalShow && <ModalForm
         uid={uid}
         action={action}

@@ -16,11 +16,11 @@ export const useCollection = (collection, _query, _category, _orderBy) => {
     if (query) {
       ref = ref.where(...query);
     }
-    if( category){
-      ref = ref.where(...category)
+    if (category) {
+      ref = ref.where(...category);
     }
-    if(orderBy) {
-      ref = ref.orderBy(...orderBy)
+    if (orderBy) {
+      ref = ref.orderBy(...orderBy);
     }
     const unsubscribe = ref.onSnapshot(
       (snapshot) => {

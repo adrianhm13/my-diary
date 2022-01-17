@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useFirestore } from "../hooks/useFirestore";
-import Picker from "emoji-picker-react";
 
 //Bootstrap components
 import Modal from "react-bootstrap/Modal";

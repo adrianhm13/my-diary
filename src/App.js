@@ -8,13 +8,12 @@ import Home from "./home/Home";
 import Login from "./login/Login";
 import Signup from "./signup/Signup";
 
-import "./App.css";
 
 function App() {
   const { authIsReady, user } = useAuthContext();
 
   return (
-    <div className="App">
+    <div>
       {authIsReady && (
         <BrowserRouter>
           <NavbarMain />

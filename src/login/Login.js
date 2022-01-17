@@ -10,8 +10,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 export default function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('test@personaldiary.com');
+  const [password, setPassword] = useState("123456");
   const { login, error, isPending } = useLogin();
 
   const handleSubmit = (e) => {
@@ -23,28 +23,31 @@ export default function Login() {
       <Row className="w-100 my-auto">
         <Col xs="12" lg="4" className="mx-auto">
           <form
+            autoComplete="disabled"
             onSubmit={(e) => handleSubmit(e)}
             className="d-flex gap-2 flex-column align-items-center bg-primary"
           >
-              <input
-                type="email"
-                aria-label="Email"
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
-              ></input>
-              <input
-                type="password"
-                aria-label="Password"
-                onChange={(e) => setPassword(e.target.value)}
-                placeholder="Password"
-              ></input>
-            {!isPending && <button variant="secondary">Log In</button>}
+            <input
+              type="email"
+              aria-label="Email"
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Email"
+              value={email}
+            />
+            <input
+              type="password"
+              aria-label="Password"
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+              value={password}
+            />
+            {!isPending && <button variant="secondary">Login</button>}
             {isPending && (
-              <button variant="secondary" disabled>
+              <button type="submit" variant="secondary" disabled>
                 Loading
               </button>
             )}
-            {error && <p className="text-danger">{error}</p>}
+            {error && <p className="text-light bg-danger p-2">{error}</p>}
           </form>
         </Col>
       </Row>

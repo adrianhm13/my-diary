@@ -1,4 +1,4 @@
-# Reddit Clone
+# Personal Diary
 
 ![Mockup](./src/assets/images/readme/Mockup-Diary.jpg)
 
